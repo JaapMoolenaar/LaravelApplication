@@ -28,6 +28,8 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
+            "php -r \"copy('.env.example', '.env');\"",
+            "php artisan key:generate",
             "php artisan clear-compiled",
             "php artisan optimize"
         ],

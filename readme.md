@@ -17,8 +17,12 @@ Laravel is accessible, yet powerful, providing powerful tools needed for large, 
 ## Installation
 
 This project is not meant to be installed via composer, but to be cloned or downloaded from git.
-
 ```git clone https://github.com/Satsume/LaravelApplication.git```
+
+To install all vendor packages
+```composer install --no-dev```
+
+Since the template is not installed via laravel's installer, the copying of the .env file and generating of the key is also placed in "post-install-cmd", which is run after you execute the above command.
 
 ## Official Documentation
 
