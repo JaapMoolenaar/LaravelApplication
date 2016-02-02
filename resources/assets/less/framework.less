@@ -1,0 +1,244 @@
+@import "variables";
+@import "bootstrap/bootstrap";
+@import "bootstrap-select/variables";
+@import "bootstrap-select/bootstrap-select";
+@import "font-awesome/variables";
+@import "font-awesome/font-awesome";
+
+@font-face {
+  font-family: form;
+  src:url('/fonts/form.eot');
+  src:url('/fonts/form.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/form.ttf') format('truetype'),
+  url('/fonts/form.woff') format('woff'),
+  url('/fonts/form.svg#formoid') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src:url('/fonts/OpenSans.eot');
+  src:url('/fonts/OpenSans.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/OpenSans.ttf') format('truetype'),
+  url('/fonts/OpenSans.woff') format('woff'),
+  url('/fonts/OpenSans.svg#formoid') format('svg');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src:url('/fonts/OpenSans-Light.eot');
+  src:url('/fonts/OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/OpenSans-Light.ttf') format('truetype'),
+  url('/fonts/OpenSans-Light.woff') format('woff'),
+  url('/fonts/OpenSans-Light.svg#formoid') format('svg');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src:url('/fonts/OpenSans-Bold.eot');
+  src:url('/fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/OpenSans-Bold.ttf') format('truetype'),
+  url('/fonts/OpenSans-Bold.woff') format('woff'),
+  url('/fonts/OpenSans-Bold.svg#formoid') format('svg');
+  font-style: normal;
+  font-weight: 700;
+}
+
+.main-container {
+    padding-bottom: 100px;
+}
+
+
+@media (max-width: @screen-xs-max) {
+    .navbar-default .navbar-collapse {
+        position: absolute;
+        background-color: @navbar-default-bg;
+        width: 100%;
+        border: 1px solid @navbar-default-border;
+        z-index: 100;
+    }
+    .navbar-inverse .navbar-collapse {
+        position: absolute;
+        background-color: @navbar-inverse-bg;
+        width: 100%;
+        border: 1px solid @navbar-inverse-border;
+        z-index: 100;
+    }
+}
+
+/* Buttons */
+.btn:not(.btn-link) {
+  font-weight: bold;
+  .transition(box-shadow 0.2s linear);
+  box-shadow: inset 0 -0.20em 0 rgba(0, 0, 0, 0.2);
+}
+.btn:not(.btn-link):active {
+  box-shadow: inset 0 -0.05em 0 rgba(0, 0, 0, 0.2);
+}
+.btn-block {
+    white-space: normal;
+}
+
+.btn-drop { 
+    position: relative; overflow: hidden; 
+}
+.btn-drop .drop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    max-width: 3px;
+    max-height: 3px;
+    opacity: 0;
+    animation: linear 1s;
+    -webkit-animation: linear 1s;
+    border-radius: 50%;
+}
+
+.keyframes(@name; @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@-ms-keyframes @name { @arguments(); }
+	@-o-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+}
+
+.animation-name(@arguments) {
+	-webkit-animation-name: @arguments;
+	-moz-animation-name: @arguments;
+	-ms-animation-name: @arguments;
+	-o-animation-name: @arguments;
+	animation-name: @arguments;
+}
+
+.drop-animation(@name;@color) {
+	.keyframes(@name;{
+        1% {
+          opacity: 0.4;
+          box-shadow: 0 0 .2em .13em darken(@color, 20%), 0 0 5px 10px @color;
+        }
+        70% {
+          box-shadow: 0 0 .2em .13em darken(@color, 20%), 0 0 0 320px @color;
+        }
+        100% {
+          opacity: 0;
+          box-shadow: 0 0 .2em .13em darken(@color, 20%), 0 0 0 549px @color;
+        }
+    });
+
+	.animation-name(@name)
+}
+
+.btn-default .drop {
+    background-color: @btn-default-bg;
+	.drop-animation(default-drop,@btn-default-border)
+}
+.btn-primary .drop {
+    background-color: @btn-primary-bg;
+	.drop-animation(primary-drop,@btn-primary-border)
+}
+.btn-success .drop {
+    background-color: @btn-success-bg;
+	.drop-animation(success-drop,@btn-success-border)
+}
+.btn-info .drop {
+    background-color: @btn-info-bg;
+	.drop-animation(info-drop,@btn-info-border)
+}
+.btn-warning .drop {
+    background-color: @btn-warning-bg;
+	.drop-animation(warning-drop,@btn-warning-border)
+}
+.btn-danger .drop {
+    background-color: @btn-danger-bg;
+	.drop-animation(danger-drop,@btn-danger-border)
+}
+
+.fa-btn {
+    margin-right: 3px;
+}
+
+
+/* Select */
+.selectpicker {
+    box-shadow: none !important;
+}
+
+/* Radio & checkbox */
+.checkbox label,
+.radio label {
+    padding-left: 0;
+}
+input[type=checkbox],
+input[type=radio]{
+  z-index:1;
+  position: absolute;
+  float: left;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  opacity: 0.01;
+  margin: 0;
+  cursor: pointer;
+}
+
+input[type=radio]+span,
+input[type=checkbox]+span{
+  margin-right:-19px;
+  padding-top: 0;
+  z-index:0;
+  position: relative;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  /*white-space: nowrap;*/
+  display: block;
+  line-height: 22px;
+  font-weight: normal;
+  font-size: 1em;
+}
+input[type=radio]+span:before,
+input[type=checkbox]+span:before{
+  position: relative;
+  font-family: form;
+  margin-right: 0.2em;
+  color: @input-border;
+  font-weight: normal;
+  line-height: 0.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+input[type=checkbox]+span:before{
+  content: "\e003";
+}
+input[type=checkbox]:hover+span:before{
+  content: "\e003";
+}
+input[type=checkbox]:checked+span:before{
+  content: "\e002";
+}
+
+input[type=radio]+span:before{
+  content: "\e001";
+}
+input[type=radio]:hover+span:before{
+  content: "\e001";
+}
+input[type=radio]:checked+span:before{
+  content: "\e000";
+}
+
+input[type=checkbox]:hover+span:before,
+input[type=radio]:hover+span:before{
+  color: @gray;
+}
+input[type=checkbox]:checked+span:before,
+input[type=radio]:checked+span:before{
+  color: @brand-primary;
+}
