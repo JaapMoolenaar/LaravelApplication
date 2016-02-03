@@ -28,6 +28,7 @@ return [
 
     'roles' => 'Roles',
     'roles.admin' => 'Admin',
+    'permission.view-users' => 'View users (enable this for module access)',
     'permission.create-user' => 'Create users',
     'permission.update-user' => 'Edit users',
     'permission.delete-user' => 'Delete users',

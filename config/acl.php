@@ -3,6 +3,7 @@
 return [
     'roles' => [
         'admin' => [
+            'view-users',
             'create-user',
             'update-user',
             'delete-user',
