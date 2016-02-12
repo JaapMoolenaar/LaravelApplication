@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "jaapmoolenaar.nl/crud-generator": "^2.0",
-        "laravelcollective/html": "^5.2",
+        "jaapmoolenaar.nl/html": "^5.3",
+        "jaapmoolenaar.nl/bootstrapper": "5.*",
         "laracasts/flash": "^1.3",
         "lavary/laravel-menu": "dev-master"
     },

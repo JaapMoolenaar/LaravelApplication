@@ -10,44 +10,35 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">
-                                        <span>Remember Me</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        {!!
+                        ControlGroup::generate(
+                            Form::label('email', 'E-Mail Address'),
+                            Form::email('email'),
+                            null,
+                            4,
+                            6
+                        )->withValidation('email')
+                        !!}
+                        
+                        {!!
+                        ControlGroup::generate(
+                            Form::label('password', 'Password'),
+                            Form::password('password'),
+                            null,
+                            4,
+                            6
+                        )->withValidation('password')
+                        !!}
+                        
+                        {!!
+                        ControlGroup::generate(
+                            null,
+                            Form::checkbox('remember')->withLabel('Remember Me'),
+                            null,
+                            4,
+                            6
+                        )->withValidation('remember')
+                        !!}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
